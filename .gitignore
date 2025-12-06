@@ -1,0 +1,27 @@
+node_modules/
+
+.env
+
+dist/
+build/
+*.js
+*.js.map
+
+/src/generated/prisma
+
+# TypeScript Build Artifacts
+*.d.ts
+*.d.ts.map
+*.tsbuildinfo
+
+# Testing
+coverage/
+
+# Misc
+*.log
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
