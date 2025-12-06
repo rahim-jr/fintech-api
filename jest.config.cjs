@@ -8,10 +8,12 @@ const tsJestTransformCfg = createDefaultPreset({
 module.exports = {
   testEnvironment: "node",
   extensionsToTreatAsEsm: [".ts"],
+  testMatch: ["**/*.test.ts"],
   moduleNameMapper: {
     "^(\\.{1,2}/.*)\\.js$": "$1",
   },
   transform: {
     ...tsJestTransformCfg,
   },
+  testTimeout: 30000,
 };
