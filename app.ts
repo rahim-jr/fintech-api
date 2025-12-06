@@ -1,4 +1,5 @@
 import express, { type Application, type Request, type Response } from "express";
+import UserRoutes from "./src/modules/user/user.routes.js";
 import cors from "cors";
 import helmet from "helmet";
 
@@ -16,6 +17,8 @@ app.get("/health", (req: Request, res: Response) => {
         timestamp: new Date().toISOString(),
     });
 })
+
+app.use('/api/v1/users', UserRoutes);
 
 app.use((err: any, req: Request, res: Response, next: express.NextFunction) => {
     console.error(err.stack);
