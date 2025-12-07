@@ -1,5 +1,7 @@
 import express, { type Application, type Request, type Response } from "express";
 import UserRoutes from "./src/modules/user/user.routes.js";
+import transactionRoutes from "./src/modules/transactions/transaction.routes.js";
+
 import cors from "cors";
 import helmet from "helmet";
 
@@ -19,6 +21,7 @@ app.get("/health", (req: Request, res: Response) => {
 });
 
 app.use('/api/v1/users', UserRoutes);
+app.use('/api/v1/transactions', transactionRoutes);
 
 app.use((err: any, req: Request, res: Response, next: express.NextFunction) => {
     console.error(err.stack);
