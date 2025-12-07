@@ -14,4 +14,19 @@ model User {
   balance   Decimal  @default(0.00)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  sentTransactions    Transaction[] @relation("SentTransactions")
+  recivedTransactions Transaction[] @relation("RecivedTransactions")
+}
+
+model Transaction {
+  id        Int      @id @default(autoincrement())
+  amount    Decimal
+  senderID  Int
+  reciverID Int
+  createdAt DateTime @default(now())
+
+  //Relations (Connect to User table) 
+  sender  User @relation("SentTransactions", fields: [senderID], references: [id])
+  reciver User @relation("RecivedTransactions", fields: [reciverID], references: [id])
 }
