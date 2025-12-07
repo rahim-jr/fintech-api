@@ -16,7 +16,7 @@ app.get("/health", (req: Request, res: Response) => {
         message: "server is running",
         timestamp: new Date().toISOString(),
     });
-})
+});
 
 app.use('/api/v1/users', UserRoutes);
 
