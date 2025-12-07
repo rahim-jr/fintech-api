@@ -23,3 +23,16 @@ export const register = async (req: Request, res: Response) => {
         res.status(500).json({ status: "error", message: "internal server error" });
     }
 };
+
+export const login = async (req: Request, res: Response) => {
+    try {
+        const result = await userService.loginUser(req.body);
+        res.status(200).json({
+            status: "sucess",
+            message: "Logged in sucessfully",
+            data: result
+        });
+    } catch (error: any) {
+        res.status(401).json({ "status": "eror", message: error.message });
+    }
+}

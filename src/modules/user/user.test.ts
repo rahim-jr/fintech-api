@@ -40,3 +40,44 @@ describe('POST /api/v1/users/register', () => {
         expect(res.body.message).toBe("User already exists");
     })
 })
+
+it("should login and return a JWT token", async () => {
+    //creating fresh user for login test to be safe
+    await request(app).post('/api/v1/users/register').send({
+        email: 'login_master@test.com',
+        password: 'password123',
+        name: 'Login Master'
+    });
+
+    //trying to login
+    const res = await request(app).post('/api/v1/users/login').send({
+        email: 'login_master@test.com',
+        password: 'password123',
+    });
+
+    //Expectations 
+    expect(res.status).toBe(200); // 200 -> OK
+    expect(res.body.status).toBe("sucess");
+    //if token exist
+    expect(res.body.data.token).toBeDefined();
+});
+
+it("should reject wrong password", async () => {
+    //creating fresh user for login test to be safe
+    await request(app).post('/api/v1/users/register').send({
+        email: 'login_master@test.com',
+        password: 'password123',
+        name: 'Login Master'
+    });
+
+    //trying to login
+    const res = await request(app).post('/api/v1/users/login').send({
+        email: 'login_master@test.com',
+        password: 'wrongpassword',
+    });
+
+    //Expectations 
+    expect(res.status).toBe(401); // 401 -> Unauthorized
+})
+
+
