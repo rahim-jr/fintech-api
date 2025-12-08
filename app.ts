@@ -1,6 +1,8 @@
 import express, { type Application, type Request, type Response } from "express";
 import UserRoutes from "./src/modules/user/user.routes.js";
 import transactionRoutes from "./src/modules/transactions/transaction.routes.js";
+import swaggerUi from "swagger-ui-express";
+import { swaggerSpec } from "./src/config/swagger.js";
 
 import cors from "cors";
 import helmet from "helmet";
@@ -20,6 +22,7 @@ app.get("/health", (req: Request, res: Response) => {
     });
 });
 
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api/v1/users', UserRoutes);
 app.use('/api/v1/transactions', transactionRoutes);
 
