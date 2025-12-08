@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx prisma generate && tsc",
     "start": "node dist/server.js",
-    "dev": "nodemon src/server.ts",
+    "dev": "nodemon server.ts",
     "test": "NODE_OPTIONS='--experimental-vm-modules' jest --watchAll --detectOpenHandles",
     "test:coverage": "jest --coverage"
   },
