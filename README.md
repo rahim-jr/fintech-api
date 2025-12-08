@@ -2,7 +2,17 @@
 
 ## Run Guide
 
-### Start Project
+### Build and Run Production
+1. Build the project:
+   ```bash
+   npm run build
+   ```
+2. Start the production server:
+   ```bash
+   npm start
+   ```
+
+### Development
 1. Start the database container:
    ```bash
    docker start fintech-db
