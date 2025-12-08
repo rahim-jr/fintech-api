@@ -4,7 +4,8 @@ import prisma from "../../config/prisma.js";
 
 //Cleaning up database -> so no user exist error
 beforeAll(async () => {
-    await prisma.user.deleteMany();
+    await prisma.transaction.deleteMany({});
+    await prisma.user.deleteMany({});
 });
 
 afterAll(async () => {

@@ -1,5 +1,4 @@
-import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
+import prisma from "../../config/prisma.js";
 
 export const transferMoney = async (SenderID: number, receiverEmail: string, amount: number) => {
     if (amount <= 0) {
